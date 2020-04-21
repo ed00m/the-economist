@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-python-helloworld
+  namespace: super-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-python-helloworld
+  template:
+    metadata:
+      labels:
+        app: api-python-helloworld
+    spec:
+      containers:
+      - name: api-python-helloworld
+        image: ed00m/flask_api_restful:v0.1
+        ports:
+        - containerPort: 8000
+        livenessProbe:
+          httpGet:
+            # when "host" is not defined, "PodIP" will be used
+            # host: my-host
+            # when "scheme" is not defined, "HTTP" scheme will be used. Only "HTTP" and "HTTPS" are allowed
+            # scheme: HTTPS
+            path: /alive
+            port: 8000
+          initialDelaySeconds: 15
+          timeoutSeconds: 1

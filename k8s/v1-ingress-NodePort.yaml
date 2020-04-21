@@ -1,0 +1,9 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: api-python-helloworld-nodeport
+  namespace: super-api
+spec:
+  backend:
+    serviceName: api-python-helloworld-nodeport
+    servicePort: 80

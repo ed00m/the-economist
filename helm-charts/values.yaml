@@ -1,0 +1,28 @@
+global:
+  namespace: api-test
+  appName: api-python-helloworld
+  appPort: 8000
+  Liveness:
+    Path: /alive
+    Port: 8000
+
+image:
+  repository: ed00m/flask_api_restful
+  tag: v0.1
+
+deployment:
+  apiVersion: apps/v1
+  replicaCount: 2
+
+namespace:
+  apiVersion: v1
+
+service:
+  apiVersion: v1
+  type: NodePort
+  port: 80
+  targetPort: 8000
+
+ingress:
+  enabled: true
+  apiVersion: extensions/v1beta1

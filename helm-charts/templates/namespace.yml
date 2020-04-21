@@ -1,0 +1,6 @@
+kind: Namespace
+apiVersion: {{ .Values.namespace.apiVersion }}
+metadata:
+  name: {{ .Values.global.namespace }}
+  labels:
+    name: {{ .Values.global.namespace }}

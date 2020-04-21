@@ -1,0 +1,30 @@
+apiVersion: {{ .Values.deployment.apiVersion }}
+kind: Deployment
+metadata:
+  name: {{ .Values.global.appName }}
+  namespace: {{ .Values.global.namespace }}
+spec:
+  replicas: {{ .Values.deployment.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.global.appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.global.appName }}
+    spec:
+      containers:
+      - name: {{ .Values.global.appName }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: {{ .Values.global.appPort }}
+        livenessProbe:
+          httpGet:
+            # when "host" is not defined, "PodIP" will be used
+            # host: my-host
+            # when "scheme" is not defined, "HTTP" scheme will be used. Only "HTTP" and "HTTPS" are allowed
+            # scheme: HTTPS
+            path: {{ .Values.global.Liveness.Path }}
+            port: {{ .Values.global.Liveness.Port }}
+          initialDelaySeconds: 15
+          timeoutSeconds: 1
