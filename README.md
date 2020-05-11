@@ -1,6 +1,6 @@
-# flask_api_rest_manifest
+# the-economist
 
-> api-python-helloworld is a simple python microservice. development with Flask and Restful library
+> the-economist is a prototype python service. development with Flask and Restful library
 
 # Google Kubernetes Engine
 
@@ -13,9 +13,6 @@
 ## Installation with Helm [+info](https://helm.sh/docs/helm/helm_install/)
 * helm install helm-charts/ --generate-name
 * helm install NAME_SERVICE helm-charts/ --set global.namespace=NAMESPACE
-
-## Installation with kubectl
-* kubectl apply -f k8s/
 
 ## Validation
 * kubectl --namespace=NAMESPACE get all

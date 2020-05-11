@@ -1,9 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: api-python-helloworld-loadbalancer-internal
-  namespace: super-api
+  name: the-economist-loadbalancer-internal
+  namespace: the-economist-namespace
 spec:
   backend:
-    serviceName: api-python-helloworld-loadbalancer-internal
+    serviceName: the-economist-loadbalancer-internal
     servicePort: 80

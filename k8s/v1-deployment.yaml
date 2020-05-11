@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-python-helloworld
-  namespace: super-api
+  name: the-economist
+  namespace: the-economist-namespace
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: api-python-helloworld
+      app: the-economist
   template:
     metadata:
       labels:
-        app: api-python-helloworld
+        app: the-economist
     spec:
       containers:
-      - name: api-python-helloworld
-        image: ed00m/flask_api_restful:v0.1
+      - name: the-economist
+        image: ed00m/the-economist:v0.1
         ports:
         - containerPort: 8000
         livenessProbe:

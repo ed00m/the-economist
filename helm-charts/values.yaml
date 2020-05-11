@@ -1,18 +1,18 @@
 global:
-  namespace: api-test
-  appName: api-python-helloworld
+  namespace: the-economist-namespace
+  appName: the-economist
   appPort: 8000
   Liveness:
     Path: /alive
     Port: 8000
 
 image:
-  repository: ed00m/flask_api_restful
+  repository: ed00m/the-economist
   tag: v0.1
 
 deployment:
   apiVersion: apps/v1
-  replicaCount: 2
+  replicaCount: 1
 
 namespace:
   apiVersion: v1

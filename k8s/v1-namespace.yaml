@@ -1,6 +1,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: super-api
+  name: the-economist-namespace
   labels:
-    name: super-api
+    name: the-economist-namespace

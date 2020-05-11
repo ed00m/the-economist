@@ -1,9 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: api-python-helloworld
-  namespace: super-api
+  name: the-economist
+  namespace: the-economist-namespace
 spec:
   backend:
-    serviceName: api-python-helloworld
+    serviceName: the-economist
     servicePort: 80
