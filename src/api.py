@@ -1,5 +1,6 @@
 import flask
 from tools import Tools
+
 # enable services with Blueprints
 import services.origins as origins
 import services.alive as alive
