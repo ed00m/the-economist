@@ -6,6 +6,7 @@ from wrapper import RESPONSE
 
 class Services():
     """
+    Requests Interface with cache option
     """
 
     def __init__(self, name_cache="default", expire_after=300):
