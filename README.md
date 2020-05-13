@@ -1,6 +1,9 @@
 # the-economist
 
-> the-economist is a prototype python service. development with Flask and Restful library
+> the-economist is a prototype python service
+> This example has two main resources that create the following endpoints:
+> * GET / || /health > return a Restful** response, status code 200, and others params
+> * GET /alive/ || /alive/* > return a response with Flask/app info and status code 200
 
 # Google Kubernetes Engine
 
@@ -24,3 +27,20 @@
 ## Docs
 * [Helm Installation](https://thenewstack.io/how-to-install-the-helm-kubernetes-package-manager-on-ubuntu-server/)
 * [Helm + GKE](https://medium.com/google-cloud/installing-helm-in-google-kubernetes-engine-7f07f43c536e)
+
+
+(*) Internal and External LoadBalancers
+
+(**) From a wrapper decorator
+
+
+# Local development
+
+## Environment
+* Linux variables:
+    * export FLASK_ENV="develop"
+    * export FLASK_DEBUG=true
+
+## Runtime
+* pip3 install -r src/requeriments.txt
+* python3 src/api.py
