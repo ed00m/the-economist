@@ -4,7 +4,7 @@ global:
   appPort: 8000
   Liveness:
     Path: /alive
-    Port: 8000
+    Port: 3000
 
 image:
   repository: ed00m/the-economist
@@ -21,7 +21,7 @@ service:
   apiVersion: v1
   type: NodePort
   port: 80
-  targetPort: 8000
+  targetPort: 3000
 
 ingress:
   enabled: true

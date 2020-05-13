@@ -2,3 +2,4 @@ Flask==1.0.2
 telepot==12.7
 requests==2.21.0
 google-cloud-logging==1.12.1
+requests-cache==0.5.2
