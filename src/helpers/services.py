@@ -1,7 +1,7 @@
 import time
 import requests
 import requests_cache
-from wrapper import RESPONSE
+from helpers.wrapper import RESPONSE
 
 
 class Services():
