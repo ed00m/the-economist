@@ -17,7 +17,7 @@ spec:
       - name: the-economist
         image: ed00m/the-economist:v0.1
         ports:
-        - containerPort: 8000
+        - containerPort: 3000
         livenessProbe:
           httpGet:
             # when "host" is not defined, "PodIP" will be used
@@ -25,6 +25,6 @@ spec:
             # when "scheme" is not defined, "HTTP" scheme will be used. Only "HTTP" and "HTTPS" are allowed
             # scheme: HTTPS
             path: /alive
-            port: 8000
+            port: 3000
           initialDelaySeconds: 15
           timeoutSeconds: 1

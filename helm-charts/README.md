@@ -42,5 +42,5 @@
     * export FLASK_DEBUG=true
 
 ## Runtime
-* pip3 install -r src/requeriments.txt
+* pip3 install -r src/requirements.txt
 * python3 src/api.py

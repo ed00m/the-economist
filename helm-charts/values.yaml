@@ -1,7 +1,7 @@
 global:
   namespace: the-economist-namespace
   appName: the-economist
-  appPort: 8000
+  appPort: 3000
   Liveness:
     Path: /alive
     Port: 3000
