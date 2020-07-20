@@ -14,6 +14,7 @@ import services.scripts as scripts
 import services.root as root
 import services.indecon as indecon
 import services.abacus as abacus
+import services.profiles as profiles
 
 
 logger = Tools().debujer
@@ -25,6 +26,7 @@ app.register_blueprint(origins.bp)
 app.register_blueprint(scripts.bp)
 app.register_blueprint(indecon.bp)
 app.register_blueprint(abacus.bp)
+app.register_blueprint(profiles.bp)
 
 logger(app.config)
 
