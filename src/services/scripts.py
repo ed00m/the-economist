@@ -1,3 +1,9 @@
+"""
+the-economist - Project X_periment.
+
+Python3.x
+"""
+
 from flask import jsonify, Blueprint
 import subprocess
 
@@ -13,13 +19,14 @@ response = {"OK": True}
 
 @bp.route("/")
 def index_page():
+    """Index page template."""
     response["data"] = "This is a root from scripts"
     return jsonify(response)
 
 
 @bp.route('/date/<string:when>')
 def date(when):
-
+    """Date page template."""
     if when == "today":
         format = "+%Y%m%d"
     else:
