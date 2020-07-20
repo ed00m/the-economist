@@ -24,6 +24,7 @@ class Tools():
         if not app:
             app = __name__
         self.app = app
+        # I'm still migrating a solution that I made, calm down and wait.
         self.log_provider = "GoogleNot"
         # [START setup_logging]
         if self.log_provider.lower() == "google".lower():

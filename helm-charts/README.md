@@ -1,6 +1,6 @@
 # the-economist
 
-the-economist is a prototype python service. This example has two main resources that create the following endpoints:
+the-economist is a prototype Python service. This example has two main resources that create the following endpoints:
 
 ## root.bp
 * GET / || /health
