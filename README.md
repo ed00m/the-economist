@@ -24,7 +24,9 @@ the-economist is a prototype Python service. This example has two main resources
 * GET /indecon/date/elemento/02-01-2020
   * return descriptor "API que entrega el valor de un elemento particular en una fecha en particular"
 
-
+## abacus.bp
+ * GET /abacus/statistics/element/cobre
+ * return mean computes for element
 
 # Tested in: Google Kubernetes Engine
 
