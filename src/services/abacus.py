@@ -52,7 +52,7 @@ def values_page(key):
 
 @bp.route("/statistics/element/<string:key>")
 def statistics_element(key):
-    """Values page template."""
+    """Statistics element page template."""
     response = Abacus(name).statistics_element(key)
     response["time"] = (time.time() - time_init)
     return jsonify(response)
