@@ -13,6 +13,7 @@ import services.alive as alive
 import services.scripts as scripts
 import services.root as root
 import services.indecon as indecon
+import services.abacus as abacus
 
 
 logger = Tools().debujer
@@ -23,6 +24,7 @@ app.register_blueprint(alive.bp)
 app.register_blueprint(origins.bp)
 app.register_blueprint(scripts.bp)
 app.register_blueprint(indecon.bp)
+app.register_blueprint(abacus.bp)
 
 logger(app.config)
 
