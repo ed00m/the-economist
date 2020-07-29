@@ -108,6 +108,12 @@ resource "kubernetes_service" "default" {
     }
 }
 
+# Compute Engine - External Address
+resource "google_compute_address" "default" {
+    name   = var.kubernetes_service
+    region = var.region
+}
+
 # Environment - Output
 output "load-balancer-ip" {
     value = google_compute_address.default.address

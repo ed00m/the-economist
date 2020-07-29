@@ -77,12 +77,6 @@ resource "google_container_node_pool" "default" {
     # }
 }
 
-# Compute Engine - location
-resource "google_compute_address" "default" {
-    name   = var.network_name
-    region = var.region
-}
-
 # Environment - Output
 output "network" {
     value = google_compute_subnetwork.default.network
