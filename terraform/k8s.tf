@@ -1,3 +1,4 @@
+# terraform - Provider
 provider "kubernetes" {
     version = "~> 1.10.0"
     host    = google_container_cluster.default.endpoint
@@ -13,26 +14,85 @@ provider "kubernetes" {
     )
 }
 
-resource "kubernetes_namespace" "develop" {
+# Kubernetes Engine - Namespace
+resource "kubernetes_namespace" "default" {
     metadata {
-        name = "develop"
+        name = var.kubernetes_namespace
     }
 }
 
-resource "google_compute_address" "default" {
-    name   = var.network_name
-    region = var.region
+# Kubernetes Engine - Workload Deployment
+resource "kubernetes_deployment" "default" {
+    metadata {
+        name = var.kubernetes_deployment
+        namespace = kubernetes_namespace.default.metadata[0].name
+        labels = {
+            app = var.kubernetes_deployment
+        }
+    }
+
+    spec {
+        replicas = var.kubernetes_deployment_replicas
+
+        selector {
+            match_labels = {
+                app = var.kubernetes_deployment
+            }
+        }
+
+        template {
+            metadata {
+                labels = {
+                    app = var.kubernetes_deployment
+                }
+            }
+
+            spec {
+                container {
+                    image = var.kubernetes_container_image
+                    name  = var.kubernetes_deployment
+
+                    resources {
+                        limits {
+                            cpu    = "0.5"
+                            memory = "512Mi"
+                        }
+                        requests {
+                            cpu    = "250m"
+                            memory = "50Mi"
+                        }
+                    }
+
+                    liveness_probe {
+                        http_get {
+                            path = "/alive"
+                            port = 3000
+
+                            http_header {
+                                name  = "X-Project"
+                                value = var.kubernetes_deployment
+                            }
+                        }
+
+                        initial_delay_seconds = 15
+                        period_seconds        = 1
+                    }
+                }
+            }
+        }
+    }
 }
 
-resource "kubernetes_service" "the-economist" {
+# Kubernetes Engine - Service
+resource "kubernetes_service" "default" {
     metadata {
-        namespace = kubernetes_namespace.develop.metadata[0].name
-        name      = "the-economist"
+        namespace = kubernetes_namespace.default.metadata[0].name
+        name      = var.kubernetes_service
     }
 
     spec {
         selector = {
-            run = "the-economist"
+            app = var.kubernetes_deployment
         }
 
         session_affinity = "ClientIP"
@@ -48,42 +108,7 @@ resource "kubernetes_service" "the-economist" {
     }
 }
 
-resource "kubernetes_replication_controller" "the-economist" {
-    metadata {
-        name      = "the-economist"
-        #namespace = kubernetes_namespace.develop.metadata[0].name
-
-        labels = {
-            run = "the-economist"
-        }
-    }
-
-    spec {
-        selector = {
-            run = "the-economist"
-        }
-
-        template {
-            container {
-                image = "ed00m/the-economist:v0.3.1"
-                name  = "the-economist"
-
-                resources {
-                    limits {
-                        cpu    = "0.5"
-                        memory = "512Mi"
-                    }
-
-                    requests {
-                        cpu    = "250m"
-                        memory = "50Mi"
-                    }
-                }
-            }
-        }
-    }
-}
-
+# Environment - Output
 output "load-balancer-ip" {
     value = google_compute_address.default.address
 }

@@ -1,36 +1,59 @@
-variable "region" {
-    default = "us-central1"
-}
-
-variable "location" {
-    default = "us-central1-a"
-}
-
-variable "network_name" {
-    default = "the-economist"
-}
-
-variable "cluster_name" {
-    default = "the-economist"
-}
-
+# Project
 variable "project" {
     default = "changeme"
 }
 
+# Location - Region
+variable "region" {
+    default = "us-central1"
+}
+# Location - Zone
+variable "zone" {
+    default = "us-central1-a"
+}
 
-variable "ip_cidr_range" {
+# Network - VPC
+variable "network_name" {
+    default = "myvpc"
+}
+# Network - Subnetwork
+variable "subnetwork_cidr_range" {
     default = "10.127.0.0/20"
 }
 
-variable "initial_node_count" {
-    default = 1
+# Kubernetes Engine - Cluster
+variable "cluster_name" {
+    default = "mycluster"
 }
-
-variable "default_preemptible_nodes" {
+# Kubernetes Engine - Node pool name
+variable "node_pool_preemptible" {
     default = "preemptible-nodes-e2small"
 }
-
-variable "machine_type" {
+# Kubernetes Engine - Node pool quantity
+variable "cluster_initial_node_count" {
+    default = 1
+}
+# Kubernetes Engine - Node pool machine type
+variable "cluster_node_machine_type" {
     default = "e2-small"
+}
+# Kubernetes Engine - Namespace
+variable "kubernetes_namespace" {
+    default = "develop"
+}
+# Kubernetes Engine - Service
+variable "kubernetes_service" {
+    default = "the-economist-service"
+}
+# Kubernetes Engine - Deployment
+variable "kubernetes_deployment" {
+    default = "the-economist-deploy"
+}
+# Kubernetes Engine - Deployment replicas
+variable "kubernetes_deployment_replicas" {
+    default = 1
+}
+# Kubernetes Engine - Service
+variable "kubernetes_container_image" {
+    default = "ed00m/the-economist:v0.3.1"
 }
