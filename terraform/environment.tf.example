@@ -1,0 +1,36 @@
+variable "region" {
+    default = "us-central1"
+}
+
+variable "location" {
+    default = "us-central1-a"
+}
+
+variable "network_name" {
+    default = "the-economist"
+}
+
+variable "cluster_name" {
+    default = "the-economist"
+}
+
+variable "project" {
+    default = "changeme"
+}
+
+
+variable "ip_cidr_range" {
+    default = "10.127.0.0/20"
+}
+
+variable "initial_node_count" {
+    default = 1
+}
+
+variable "default_preemptible_nodes" {
+    default = "preemptible-nodes-e2small"
+}
+
+variable "machine_type" {
+    default = "e2-small"
+}
