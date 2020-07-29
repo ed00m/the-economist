@@ -28,7 +28,38 @@ the-economist is a prototype Python service. This example has two main resources
  * GET /abacus/statistics/element/cobre
  * return mean computes for element
 
-# Tested in: Google Kubernetes Engine
+# Installation and Testing
+**Tested in:** Google Kubernetes Engine
+
+## Quick installation with Terraform [+info](https://www.terraform.io/docs/index.html)
+**No guarantees** but the most **_attractive_**
+
+1. Position yourself in the terraform directory to configure the environment
+
+    * cd terraform
+    * cp environment.tf.sample environment.tf
+
+    And, _Customize the installation_ by changing the project and the parameters you need
+
+    * Add the service account as account.json
+
+
+2. Then initialize the environment, and evaluate the changes
+
+    * terraform init
+    * terraform plan
+
+
+3. Do You like? Is this plan sexy and attractive? Apply it
+
+    * terraform apply
+
+
+4. And now that? You're done? then destroy it
+
+    * terraform destroy
+
+    _**Important:** Do not forget_ ! the wallet will thank you
 
 ## Installation with Helm [+info](https://helm.sh/docs/helm/helm_install/)
 * helm install helm-charts/ --generate-name
