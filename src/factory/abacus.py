@@ -88,3 +88,22 @@ class Abacus():
             }
 
         return self.response
+
+
+
+    def profiles_page(self):
+        """
+        /indecon/last.
+
+        API que entrega los últimos valores de todos los elementos
+        y crea un perfil de los indicadores
+        """
+        self.response["data"] = []
+        self.response_last = Indecon(self.app_name).last_page()
+
+        for element, value in self.response_last["data"].items():
+            self.response_statistics = self.statistics_element(element)
+            value["profile"] = self.response_statistics["data"]
+            self.response["data"].append(value)
+        
+        return self.response

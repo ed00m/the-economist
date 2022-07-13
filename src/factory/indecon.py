@@ -11,18 +11,18 @@ class Indecon():
     """
     Indicadores Economicos.
 
-    Se debe conectar por lo menos a un servicio de https://www.indecon.online/
+    Se debe conectar por lo menos a un servicio de https://www.indecon.space/
     para obtener uno o varios indicadores economicos.
     """
 
     def __init__(self, app_name="indecon"):
         """Initialize service endpoint."""
         self.app_name = app_name
-        self.url = "https://www.indecon.online"
+        self.url = "https://www.indecon.space"
 
     def index_page(self):
         """
-        https://www.indecon.online/.
+        https://www.indecon.space/.
 
         Get All Apis information.
         """
@@ -31,7 +31,7 @@ class Indecon():
 
     def date_page(self, key, date):
         """
-        https://www.indecon.online/date/cobre/02-01-2020.
+        https://www.indecon.space/date/cobre/02-01-2020.
 
         Entrega el valor de un elemento particular en una fecha en particular.
         """
@@ -41,7 +41,7 @@ class Indecon():
 
     def last_page(self):
         """
-        https://www.indecon.online/last.
+        https://www.indecon.space/last.
 
         API que entrega los últimos valores de todos los elementos.
         """
@@ -51,7 +51,7 @@ class Indecon():
 
     def values_page(self, key):
         """
-        https://www.indecon.online/values/cobre.
+        https://www.indecon.space/values/cobre.
 
         API que entrega todos los valores de un elemento particular.
         """

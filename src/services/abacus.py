@@ -56,3 +56,11 @@ def statistics_element(key):
     response = Abacus(name).statistics_element(key)
     response["time"] = (time.time() - time_init)
     return jsonify(response)
+
+
+@bp.route("/profiles")
+def profiles_page():
+    """Profiles template."""
+    response = Abacus(name).profiles_page()
+    response["time"] = (time.time() - time_init)
+    return jsonify(response)
