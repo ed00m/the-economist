@@ -19,6 +19,7 @@ class Abacus():
     def __init__(self, app_name="abacus"):
         """Initialize service endpoint."""
         self.app_name = app_name
+        self.response = {}
 
     def index_page(self):
         """
@@ -98,12 +99,21 @@ class Abacus():
         API que entrega los últimos valores de todos los elementos
         y crea un perfil de los indicadores
         """
-        self.response["data"] = []
+    def profiles_page(self):
+        """
+        /indecon/last.
+
+        API que entrega los últimos valores de todos los elementos
+        y crea un perfil de los indicadores
+        """
+        self.response = {}
+        profiles = [] 
         self.response_last = Indecon(self.app_name).last_page()
 
         for element, value in self.response_last["data"].items():
             self.response_statistics = self.statistics_element(element)
             value["profile"] = self.response_statistics["data"]
-            self.response["data"].append(value)
+            profiles.append(value)
         
+        self.response["data"] = profiles
         return self.response

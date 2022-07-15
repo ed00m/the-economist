@@ -4,3 +4,4 @@ requests==2.24.0
 google-cloud-logging==1.12.1
 requests-cache==0.5.2
 Faker==4.1.1
+flask-cors

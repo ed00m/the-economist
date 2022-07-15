@@ -5,6 +5,7 @@ Python3.x
 """
 
 import flask
+from flask_cors import CORS, cross_origin
 from tools import Tools
 
 # enable services with Blueprints
@@ -20,6 +21,8 @@ import services.profiles as profiles
 logger = Tools().debujer
 
 app = flask.Flask(__name__)
+cors = CORS(app)
+
 app.register_blueprint(root.bp)
 app.register_blueprint(alive.bp)
 app.register_blueprint(origins.bp)
