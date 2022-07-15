@@ -56,7 +56,7 @@ class Abacus():
         """
         self.response = Indecon(self.app_name).values_page(key)
         values = [value for value in self.response.get("data").get("values").values()]
-        self.response["data"]['values'] = values[:10]
+        self.response["data"]["values"] = values[:10]
         return self.response
 
     def statistics_element(self, element):
@@ -71,10 +71,7 @@ class Abacus():
 
         if isinstance(self.values.get("data"), dict):
             self.values_data = self.values.get("data").get("values")
-
-            self.values_list = [
-                value for value in self.values_data.values()
-            ]
+            self.values_list  = self.values_data
 
             self.lenofvalues = len(self.values_list)
             self.sumofvalues = sum(self.values_list)
@@ -102,17 +99,15 @@ class Abacus():
         """
         self.response = {}
         profiles = [] 
-        self.response_last = Indecon(self.app_name).last_page()
+        self.response_last = self.last_page()
 
         for element, value in self.response_last["data"].items():
             self.response_statistics = self.statistics_element(element)
-            self.response_values = Indecon(self.app_name).values_page(element)
+            self.response_values = self.values_page(element)
 
             value["profile"] = self.response_statistics["data"]
-            values = [value for value in self.response_values.get("data").get("values").values()]
-            value['values'] = values[:10]
+            value["values"] = self.response_values.get("data").get("values")
             profiles.append(value)
-            del value["profile"]["values"]
         
         self.response["data"] = profiles
         return self.response
