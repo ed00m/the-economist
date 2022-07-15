@@ -55,6 +55,8 @@ class Abacus():
         API que entrega todos los valores de un elemento particular.
         """
         self.response = Indecon(self.app_name).values_page(key)
+        values = [value for value in self.response.get("data").get("values").values()]
+        self.response["data"]['values'] = values[:10]
         return self.response
 
     def statistics_element(self, element):
@@ -91,14 +93,6 @@ class Abacus():
         return self.response
 
 
-
-    def profiles_page(self):
-        """
-        /indecon/last.
-
-        API que entrega los últimos valores de todos los elementos
-        y crea un perfil de los indicadores
-        """
     def profiles_page(self):
         """
         /indecon/last.
