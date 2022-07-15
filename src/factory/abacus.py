@@ -112,8 +112,13 @@ class Abacus():
 
         for element, value in self.response_last["data"].items():
             self.response_statistics = self.statistics_element(element)
+            self.response_values = Indecon(self.app_name).values_page(element)
+
             value["profile"] = self.response_statistics["data"]
+            values = [value for value in self.response_values.get("data").get("values").values()]
+            value['values'] = values[:10]
             profiles.append(value)
+            del value["profile"]["values"]
         
         self.response["data"] = profiles
         return self.response
