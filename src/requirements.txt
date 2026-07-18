@@ -1,6 +1,6 @@
 Flask==2.1.2
 telepot==12.7
-requests==2.24.0
+requests==2.31.0
 google-cloud-logging==1.12.1
 requests-cache==0.5.2
 Faker==4.1.1
